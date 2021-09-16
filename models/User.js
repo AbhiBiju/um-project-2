@@ -3,14 +3,42 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 // Create user model
-class USER extends Model {
+class User extends Model {
     // Need method to check pw
 }
 
 // Create fields and columns for User model here
 User.init(
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true
+            }
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [8]
+            }
+        }
+
+    }
     // Need to add hooks
-)
+);
 
 
 module.exports = User;
