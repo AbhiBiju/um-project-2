@@ -1,29 +1,46 @@
 const User = require("./User");
 // Add other required models here
-const Playlist = require("./Playlist");
-const Song = require("./Song");
+const Post = require("./Post");
+const Book = require("./Book");
+const BookClub = require("./BookClub");
+const BookClubMember = require("./BookClubMember");
 
 // Add associations
-User.hasMany(Playlist, {
+User.hasMany(Post, {
   foreignKey: "user_id",
 });
 
-Playlist.belongsTo(User, {
+User.hasMany(Book, {
+  foreignKey: "user_id",
+});
+
+User.hasMany(BookClub, {
+  foreignKey: "user_id",
+});
+
+Post.belongsTo(User, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });
 
-Playlist.hasMany(Song, {
-  foreignKey: "playlist_id",
-});
-
-Song.belongsTo(Playlist, {
-  foreignKey: "playlist_id",
+Book.belongsTo(User, {
+  foreignKey: "user_id",
   onDelete: "SET NULL",
 });
 
-Song.belongsTo(User, {
+BookClub.belongsTo(User, {
+  foreignKey: "owner_id",
+  onDelete: "SET NULL",
+});
+
+User.belongsTo(BookClub, {
+  through: BookClubMember,
   foreignKey: "user_id",
+});
+
+BookClubMember.hasMany(BookClub, {
+  through: BookClubMember,
+  foreignKey: "bookclub_id",
   onDelete: "SET NULL",
 });
 

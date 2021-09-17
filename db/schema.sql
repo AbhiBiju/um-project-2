@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS musicApp_db;
+DROP DATABASE IF EXISTS bookApp_db;
 
-CREATE DATABASE musicApp_db;
+CREATE DATABASE bookApp_db;

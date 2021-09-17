@@ -2,10 +2,10 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // Create user model
-class Playlist extends Model {}
+class BookClubMember extends Model {}
 
 // Create fields and columns for User model here
-Playlist.init(
+BookClubMember.init(
   {
     // Need to add hooks
     id: {
@@ -14,16 +14,13 @@ Playlist.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
+    bookclub_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "bookclub",
+        key: "id",
       },
-    },
-    genre: {
-      type: DataTypes.TEXT,
-      allowNull: true,
+      onDelete: "CASCADE",
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -38,8 +35,8 @@ Playlist.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "playlist",
+    modelName: "bookclubmember",
   }
 );
 
-module.exports = Playlist;
+module.exports = BookClubMember;

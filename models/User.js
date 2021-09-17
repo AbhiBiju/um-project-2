@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
 // Create user model
 class User extends Model {
@@ -23,6 +23,22 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
+    },
+    zip_code:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isNumeric:true,
+        is: /^\d{5}(-\d{4})?$/,
+      },
     },
     password: {
       type: DataTypes.STRING,
@@ -52,6 +68,5 @@ User.init(
     modelName: "user",
   }
 );
-
 
 module.exports = User;
