@@ -8,14 +8,12 @@ const BookClubMember = require("./BookClubMember");
 // Add associations
 User.hasMany(Post, {
   foreignKey: "user_id",
+  onDelete: "SET NULL",
 });
 
 User.hasMany(Book, {
   foreignKey: "user_id",
-});
-
-User.hasMany(BookClub, {
-  foreignKey: "user_id",
+  onDelete: "SET NULL",
 });
 
 Post.belongsTo(User, {
@@ -28,21 +26,19 @@ Book.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
-BookClub.belongsTo(User, {
+User.hasOne(BookClub, {
   foreignKey: "owner_id",
-  onDelete: "SET NULL",
 });
 
-User.belongsTo(BookClub, {
+User.belongsToMany(BookClub, {
   through: BookClubMember,
   foreignKey: "user_id",
 });
 
-BookClubMember.hasMany(BookClub, {
+User.belongsToMany(BookClub, {
   through: BookClubMember,
-  foreignKey: "bookclub_id",
-  onDelete: "SET NULL",
+  // foreignKey: "bookclub_id",
 });
 
 // Add other models to export
-module.exports = { User, Playlist, Song };
+module.exports = { User, Post, Book, BookClub, BookClubMember };

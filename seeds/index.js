@@ -1,6 +1,8 @@
-const seedUsers = require("./user-seeds");
-const seedPlaylists = require("./playlist-seeds");
-const seedSongs = require("./song-seeds");
+const seedUsers = require("./user-seeds.js");
+const seedPosts = require("./post-seeds.js");
+const seedBooks = require("./book-seeds.js");
+const seedBookClubs = require("./bookclub-seeds.js");
+const seedBookClubMembers = require("./bookclubmember-seeds.js");
 
 const sequelize = require("../config/connection");
 
@@ -11,10 +13,16 @@ const seedAll = async () => {
   await seedUsers();
   console.log("\n--------------\n");
 
-  await seedPlaylists();
+  await seedBooks();
   console.log("\n--------------\n");
 
-  await seedSongs();
+  await seedPosts();
+  console.log("\n--------------\n");
+
+  await seedBookClubs();
+  console.log("\n--------------\n");
+
+  await seedBookClubMembers();
   console.log("\n--------------\n");
 
   process.exit(0);

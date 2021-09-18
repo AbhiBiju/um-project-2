@@ -32,11 +32,11 @@ User.init(
         isEmail: true,
       },
     },
-    zip_code:{
+    zip_code: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isNumeric:true,
+        isNumeric: true,
         is: /^\d{5}(-\d{4})?$/,
       },
     },
