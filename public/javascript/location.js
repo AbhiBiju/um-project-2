@@ -22,5 +22,25 @@ async function getCoordinates(event) {
     console.log(dispCity);
 }
 
+// This function gets the coordinates based off geolocation confirmed by the user when they click on 'near me' button
+async function getLocation(position) {
+    if ('geolocation' in navigator) {
+        console.log('geolocation available');
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log(position.coords.latitude);
+            const latitude = position.coords.latitude;
+            lat.push(latitude);
+            console.log(position.coords.longitude);
+            const longitude = position.coords.longitude;
+            lon.push(longitude);
+        });
+    } else {
+        console.log('geolocation not available');
+    }
+}
+
+
 // This method adds an event listener to the zip code submit button to call the getCoordinates function when clicked
 document.querySelector('.zip-submit').addEventListener('submit', getCoordinates);
+// Need to add a {{#if logedin}} button to the header with an id="near-me"
+document.querySelector('#near-me').addEventListener('click', getLocation);
