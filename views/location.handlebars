@@ -1,3 +1,4 @@
+{{#if !zip_code}}
 <form class="zip-submit">
     <div>
         <label for="zip-code">Please enter your zip code to find books for sale and connect to people near you!</label>
@@ -7,4 +8,15 @@
         <button type="submit">ENTER</button>
     </div>
 </form>
+{{/if}}
+
+<p>Here are people near you who are selling books or are part of local book clubs!</p>
+{{!-- need to indicate if the pin is selling a book or part of book club need to include genre on pin hover ?use modal?--}}
+<div class="flex justify-center map">
+    <div id="map"></div>
+</div>
+        
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&callback=initMap&v=weekly" async></script>
+
 <script src="/public/javascript/location.js"></script>
