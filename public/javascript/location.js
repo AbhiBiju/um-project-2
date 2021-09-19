@@ -39,8 +39,71 @@ async function getLocation(position) {
     }
 }
 
+function initMap() {
+    // Use to set the center of the map to the current user's location / Need to get from stored values in table of lat and lon
+    // const currentUser = {lat: user.latitude, lng: user.longitude};
+    const currentUser = { lat: 27.88, lng: -82.8 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+        // This sets the zoom distance in the map
+        zoom: 10,
+        // This sets the center of the map for the current location being searched
+        center: currentUser,
+    });
+    // This calls for the markers to be created and placed on the map after the map has been created
+    setMarkers(map);
+}
+
+// Data for the markers consisting of a name, a LatLng and a zIndex for the
+// order in which these markers should display on top of each other.
+const users = [
+    // [user.username, user.latitude, user.longitude, user.zIndex],
+    ["mmegroff0", 27.87986, -82.75092, 4],
+    ["lchinnery1", 27.90803, -82.75529, 5],
+    ["jhelin2", 27.84179, -82.79544, 3],
+    ["bsatterley3", 27.88301, -82.82732, 2],
+    ["hlozano4", 27.91560, -82.80650, 1],
+];
+
+// This creates the multiple markers for the map
+function setMarkers(map) {
+    // Adds markers to the map.
+    const image = {
+        url: "./BookHeartPin2.png",
+        //url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(20, 32),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(0, 32),
+    };
+    // Shapes define the clickable region of the icon.
+    const shape = {
+        coords: [1, 1, 1, 20, 18, 20, 18, 1],
+        type: "poly",
+    };
+
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+
+        const marker = new google.maps.Marker({
+            position: { lat: user[1], lng: user[2] },
+            map,
+            icon: image,
+            shape: shape,
+            title: user[0],
+            zIndex: user[3],
+        });
+        // Add a click listener for each marker
+        marker.addListener("click", () => {
+            console.log("Marker clicked");
+        });
+    }
+    
+}
 
 // This method adds an event listener to the zip code submit button to call the getCoordinates function when clicked
 document.querySelector('.zip-submit').addEventListener('submit', getCoordinates);
+
 // Need to add a {{#if logedin}} button to the header with an id="near-me"
 document.querySelector('#near-me').addEventListener('click', getLocation);
