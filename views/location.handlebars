@@ -10,10 +10,14 @@
 </form>
 {{/if}}
 
-<p>Here are people near you who are selling books or are part of local book clubs!</p>
 {{!-- need to indicate if the pin is selling a book or part of book club need to include genre on pin hover ?use modal?--}}
 <div class="flex justify-center map">
-    <div id="map"></div>
+    <div class="grid grid-rows">
+        <div class="grid grid-col-12 gap-4"></div>
+            <p class="col-span-12">Here are people near you who are selling books or are part of local book clubs!</p>
+            <div class="col-start-2 col-end-12" id="map"></div>
+        </div>
+    </div>
 </div>
         
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
