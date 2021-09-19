@@ -11,12 +11,14 @@ User.hasMany(Post, {
   onDelete: "SET NULL",
 });
 
-User.hasMany(Book, {
+Post.belongsTo(User, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });
 
-Post.belongsTo(User, {
+// ------------------------
+
+User.hasMany(Book, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });
@@ -26,18 +28,37 @@ Book.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
+// ------------------------
+
+User.belongsToMany(BookClub, {
+  through: BookClubMember,
+  as: "joined_clubs",
+
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
 User.hasOne(BookClub, {
   foreignKey: "owner_id",
+  as: "started_clubs",
+  onDelete: "SET NULL",
 });
 
-User.belongsToMany(BookClub, {
+// ------------------------
+
+BookClub.belongsToMany(User, {
   through: BookClubMember,
-  foreignKey: "user_id",
+  as: "members",
+
+  foreignKey: "bookclub_id",
+  onDelete: "SET NULL",
 });
 
-User.belongsToMany(BookClub, {
-  through: BookClubMember,
-  // foreignKey: "bookclub_id",
+BookClub.belongsTo(User, {
+  as: "owner",
+  
+  foreignKey: "owner_id",
+  onDelete: "SET NULL",
 });
 
 // Add other models to export
