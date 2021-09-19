@@ -1,14 +1,20 @@
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-// Add other required models to this existing const
-const { User } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const sequelize = require("../config/connection");
+const { Post, User, Comment, Vote } = require("../models");
+const withAuth = require("../utils/auth");
 
-// Add dashboard routes
+// get all posts for dashboard
+router.get("/", withAuth, (req, res) => {
+  console.log(req.session);
+  console.log("======================");
 
+  res.render("dashboard", { loggedIn: true });
+});
 
-
-
-
+router.get("/edit/:id", withAuth, (req, res) => {
+  res.render("edit-post", {
+    loggedIn: true,
+  });
+});
 
 module.exports = router;
