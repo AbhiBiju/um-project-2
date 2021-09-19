@@ -1,4 +1,4 @@
-const User = require("./User");
+const User = require('./User');
 // Add other required models here
 const Post = require("./Post");
 const Book = require("./Book");
