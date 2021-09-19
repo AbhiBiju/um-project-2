@@ -1,4 +1,4 @@
-{{#if !zip_code}}
+{{#unless zip_code}}
 <form class="zip-submit">
     <div>
         <label for="zip-code">Please enter your zip code to find books for sale and connect to people near you!</label>
@@ -8,7 +8,7 @@
         <button type="submit">ENTER</button>
     </div>
 </form>
-{{/if}}
+{{/unless}}
 
 {{!-- need to indicate if the pin is selling a book or part of book club need to include genre on pin hover ?use modal?--}}
 <div class="flex justify-center map">
