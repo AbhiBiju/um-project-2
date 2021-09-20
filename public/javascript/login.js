@@ -1,4 +1,6 @@
 // Add async functions for logging in/signing up
+var login = document.getElementById("loginDisplay");
+login.style.display="none";
 async function loginFormHandler(event) {
     event.preventDefault();
   
