@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Vote } = require("../models");
+const { Post, User, Comment, Location } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
@@ -14,6 +14,19 @@ router.get("/", withAuth, (req, res) => {
 router.get("/edit/:id", withAuth, (req, res) => {
   res.render("edit-post", {
     loggedIn: true,
+  });
+});
+
+// This is for location
+router.get("/location", withAuth, (req, res) => {
+  User.findAll({
+    // where: users are within 20mi of current user(center) (first 3 numbers match? : 33.2 +-2, -55.1+-2)
+    // {{#each}}user.latitude = currentUser.latitude[33.2+-2]
+    // {{#each}}user.longitude = currentUser.longitude[33.2+-2]
+    // need to add a currentUser id like we did with manager id
+  })
+  res.render("location", {
+    loggedIn: true
   });
 });
 

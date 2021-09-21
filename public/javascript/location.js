@@ -68,6 +68,7 @@ const users = [
 function setMarkers(map) {
     // Adds markers to the map.
     const image = {
+        // url:`${userImg}`,
         url: "./BookHeartPin2.png",
         //url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
         // This marker is 20 pixels wide by 32 pixels high.
