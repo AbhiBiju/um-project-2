@@ -14,13 +14,13 @@ Book.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
-    },
+    // title: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [1],
+    //   },
+    // },
     author: {
       type: DataTypes.TEXT,
       allowNull: false,

@@ -22,11 +22,11 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ["id", "title", "book_name", "book_author", "price", "content", "created_at"],
+        attributes: ["id", "book_name", "book_author", "price", "content", "created_at"],
       },
       {
         model: Book,
-        attributes: ["id", "title", "author", "price", "created_at"],
+        attributes: ["id", "author", "price", "created_at"],
       },
       {
         model: BookClub,

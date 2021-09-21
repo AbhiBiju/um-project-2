@@ -7,7 +7,7 @@ const withAuth = require("../../utils/auth");
 router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
-    attributes: ["id", "title", "book_name", "book_author", "price", "content", "user_id", "created_at"],
+    attributes: ["id", "book_name", "book_author", "price", "content", "user_id", "created_at"],
     include: [
       {
         model: User,
@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "book_name", "book_author", "price", "content", "user_id", "created_at"],
+    attributes: ["id", "book_name", "book_author", "price", "content", "user_id", "created_at"],
     include: [
       {
         model: User,
@@ -49,10 +49,9 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
-  // expects {"title", "book_name", "book_author", "price", "content", "user_id"}
+  // expects {"book_name", "book_author", "price", "content", "user_id"}
   Post.create({
-    title: req.body.title,
-    book_name: req.body.book_name,
+        book_name: req.body.book_name,
     book_author: req.body.book_author,
     price: req.body.price,
     content: req.body.content,
@@ -80,8 +79,7 @@ router.put("/upvote", withAuth, (req, res) => {
 router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
-      title: req.body.title,
-      book_name: req.body.book_name,
+            book_name: req.body.book_name,
       book_author: req.body.book_author,
       price: req.body.price,
       content: req.body.content,
