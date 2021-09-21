@@ -1,7 +1,16 @@
 // This function uses the google geocode API to convert postal code to coordinates
 async function getCoordinates(event) {
     event.preventDefault();
-
+    // const userZipCode = await fetch(`/api/user`, {
+    //     method: 'GET',
+    //     // attributes: [
+    //     //     'id',
+    //     //     'zip_code'
+    //     // ]
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
     const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=33773&key=${process.env.GOOGLE_API_KEY}`);
 
     const convertedZip = await response.json();
@@ -57,6 +66,7 @@ function initMap() {
 // order in which these markers should display on top of each other.
 const users = [
     // [user.username, user.latitude, user.longitude, user.zIndex],
+    // Use match.floor to randomly generate zIndex
     ["mmegroff0", 27.87986, -82.75092, 4],
     ["lchinnery1", 27.90803, -82.75529, 5],
     ["jhelin2", 27.84179, -82.79544, 3],
@@ -69,7 +79,7 @@ function setMarkers(map) {
     // Adds markers to the map.
     const image = {
         // url:`${userImg}`,
-        url: "./BookHeartPin2.png",
+        url: "../img/BookHeartPin2.png",
         //url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
         // This marker is 20 pixels wide by 32 pixels high.
         size: new google.maps.Size(20, 32),

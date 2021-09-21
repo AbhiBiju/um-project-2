@@ -22,6 +22,11 @@ Location.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    zIndex: {
+      // Need to limit increment
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     user_id: {
         type: DataTypes.INTEGER,
         references: {
