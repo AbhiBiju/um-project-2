@@ -13,10 +13,10 @@ Post.init(
       autoIncrement: true,
     },
     // Title is book name
-    // title: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     book_name: {
       type: DataTypes.TEXT,
       allowNull: false,

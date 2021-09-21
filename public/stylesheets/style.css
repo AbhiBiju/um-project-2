@@ -10,7 +10,7 @@
     color: #333;
   }
   
-  a {
+  /* a {
     text-decoration: none;
     color: #225ca3;
     font-weight: bold;
@@ -19,9 +19,9 @@
   
   a:hover {
     color: #3486eb;
-  }
+  } */
   
-  button {
+  /* button {
     background-color: #225ca3;
     border: 0;
     padding: 1%;
@@ -34,7 +34,7 @@
   
   button:hover {
     background-color: #3486eb;
-  }
+  } */
   
   .post-list {
     margin: 0;

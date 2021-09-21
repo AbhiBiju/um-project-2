@@ -6,14 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Just Tech News</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/tailwind.css">
 </head>
 
-<body>
-    <header>
-      <h1>
-        <a href="/">Just Tech News</a>
-      </h1>
-      <nav>
+<body class="bg-blue">
+    <header class="font-semibold text-xl tracking-tight flex-col justify-between">
+      <nav class="inline-flex justify-between">
+        <h1 class="px-20">
+          <a href="/">Book<span class="text-green-500">Me</span></a>
+        </h1>
         {{#if loggedIn}}
         <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">Logout</button>
@@ -21,6 +22,20 @@
         <a href="/login" id="loginDisplay">Login</a>
         {{/if}}
       </nav>
+      <ul class="inline-flex justify-between py-5">
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Homepage</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Dashboard</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Book Club</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Near Me</a>
+        </li>
+      </ul>
     </header>
   <div class="wrapper">
     <main>
