@@ -12,6 +12,7 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // Title is book name
     title: {
       type: DataTypes.STRING,
       allowNull: false,

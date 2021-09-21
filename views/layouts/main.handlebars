@@ -2,40 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookMe!</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/public/stylesheets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookMe!</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <link rel="stylesheet" href="/stylesheets/tailwind.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<body>
-    <div class="wrapper">
-        <header>
-            <h1>
-                <a href="/">BookMe!</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                <a href="/dashboard">dashboard</a>
-                <button id="logout" class="btn-no-style">Logout</button>
-                {{else}}
-                <a href="/login">Login</a>
-                {{/if}}
-            </nav>
-        </header>
-        <main>
-            {{{ body }}}
-        </main>
-        <footer>
-            Made with ❤ 2021 All rights reserved. Abhinav Biju | Diana Salas | Malik Harris | Tysean Hill.
-        </footer>
-    </div>
-
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
+<body class="bg-blue">
+    <header class="font-semibold text-xl tracking-tight flex-col justify-between">
+      <nav class="inline-flex justify-between">
+        <h1 class="px-20">
+          <a href="/">Book<span class="text-green-500">Me</span></a>
+        </h1>
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <a href="/login" id="loginDisplay">Login</a>
+        {{/if}}
+      </nav>
+      <ul class="inline-flex justify-between py-5">
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Homepage</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Dashboard</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Book Club</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="">Near Me</a>
+        </li>
+      </ul>
+    </header>
+  <div class="wrapper">
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      Made with ❤ 2021 All rights reserved. Abhinav Biju | Diana Salas | Malik Harris | Tysean Hill.
+    </footer>
+  </div>
+  
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>

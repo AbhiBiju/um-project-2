@@ -34,7 +34,7 @@ User.init(
     },
     zip_code: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isNumeric: true,
         is: /^\d{5}(-\d{4})?$/,
