@@ -14,3 +14,9 @@ async function logout() {
     
 // Need eventListener for logout button
 document.querySelector('#logout').addEventListener('click', logout);
+
+
+function loginPage(){
+  document.querySelector('#login-button').removeAttribute(StyleSheet);
+}
+document.querySelector('#login-button').addEventListener('click', loginPage);

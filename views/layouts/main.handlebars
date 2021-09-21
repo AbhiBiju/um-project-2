@@ -4,29 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Tech News</title>
+  <title>BookMe!</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-  <div class="wrapper">
     <header>
       <h1>
-        <a href="/">Just Tech News</a>
+        <a href="/" >BookMe!</a>
       </h1>
-      <nav>
+      <nav class>
         {{#if loggedIn}}
         <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">Logout</button>
         {{else}}
-        <a href="/login">Login</a>
+        <a href="/login" id="login-display">Login</a>
         {{/if}}
       </nav>
     </header>
-    <main>
+  <div class="wrapper">
+    <main >
       {{{ body }}}
     </main>
-    <footer>
+    <footer >
       Thanks for visiting!
     </footer>
   </div>
@@ -34,6 +34,8 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+
+  
 </body>
 
 </html>
