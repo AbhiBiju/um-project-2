@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
-const { User, Post, Book, BookClub, BookClubMember } = require("../../models");
+const { User, Post, Book, BookClub, BookClubMember, Vote } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // get all posts
@@ -12,6 +12,14 @@ router.get("/", (req, res) => {
       {
         model: User,
         attributes: ["username"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
       },
     ],
   })
@@ -34,6 +42,14 @@ router.get("/:id", (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
     ],
   })
     .then((dbPostData) => {
@@ -51,9 +67,9 @@ router.get("/:id", (req, res) => {
 
 router.post("/", withAuth, (req, res) => {
   console.log('=====================');
-  // expects {"book_name", "book_author", "price", "content", "user_id"}
+  // expects { "book_name", "book_author", "price", "content", "user_id"}
   Post.create({
-        book_name: req.body.book_name,
+    book_name: req.body.book_name,
     book_author: req.body.book_author,
     price: req.body.price,
     content: req.body.content,
@@ -65,18 +81,6 @@ router.post("/", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
-/* 
-router.put("/upvote", withAuth, (req, res) => {
-  // custom static method created in models/Post.js
-  Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-    .then((updatedVoteData) => res.json(updatedVoteData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-*/
 
 router.put("/:id", withAuth, (req, res) => {
   console.log('=====================');
