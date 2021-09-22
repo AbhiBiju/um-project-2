@@ -1,5 +1,7 @@
 const router = require("express").Router();
-const { User, Post, Book, BookClub, BookClubMember } = require("../../models");
+const cloudinary = require("../../utils/cloudinary");
+const upload = require("../../utils/multer");
+const { User, Post, Book, BookClub, BookClubMember, Comment, Vote } = require("../../models");
 
 // get all users
 router.get("/", (req, res) => {
@@ -22,11 +24,25 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ["id", "title", "book_name", "book_author", "price", "content", "created_at"],
+        attributes: ["id", "book_name", "book_author", "price", "content", "created_at"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "created_at"],
+        include: {
+          model: Post,
+          attributes: ["book_name"],
+        },
       },
       {
         model: Book,
-        attributes: ["id", "title", "author", "price", "created_at"],
+        attributes: ["title"],
+        through: Vote,
+        as: "voted_books",
+      },
+      {
+        model: Book,
+        attributes: ["id", "title", "author", "created_at"],
       },
       {
         model: BookClub,
@@ -54,11 +70,14 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  User.create({
+router.post("/", upload.any(), async (req, res) => {
+  const imgUpload = await cloudinary.uploader.upload(req.files[0].path);
+
+  await User.create({
     username: req.body.username,
     email: req.body.email,
+    avatar: imgUpload.url,
+    zip_code: req.body.zip_code,
     password: req.body.password,
   })
     .then((dbUserData) => {
@@ -72,7 +91,6 @@ router.post("/", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
     });
 });
 

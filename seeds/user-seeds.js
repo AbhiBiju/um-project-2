@@ -29,7 +29,7 @@ const userdata = [
   {
     username: "hlozano4",
     email: "oclues4@yolasite.com",
-    zip_code: "0378",
+    zip_code: "37823",
     password: "g7wh69jQ1I",
   },
   {
