@@ -4,7 +4,7 @@
   "description": "music_wise",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwind build public/src/style.css -o public/stylesheets/tailwind.css",
     "seed": "node seeds/index.js",
     "start": "node server.js"
   },
@@ -29,7 +29,10 @@
     "handlebars": "^4.7.7",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
+<<<<<<< HEAD
     "path": "^0.12.7",
+=======
+>>>>>>> a5aa6f69da61d140f72b2e8048deb61f27b2d786
     "postcss-import": "^14.0.2",
     "sequelize": "^6.6.5"
   },
