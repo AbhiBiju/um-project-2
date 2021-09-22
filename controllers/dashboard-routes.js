@@ -10,7 +10,7 @@ router.get("/", withAuth, (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
-      id: req.params.id,
+      id: req.session.user_id,
     },
     include: [
       {
@@ -26,14 +26,14 @@ router.get("/", withAuth, (req, res) => {
         },
       },
       {
-        model: Post,
-        attributes: ["book_name"],
+        model: Book,
+        attributes: ["title"],
         through: Vote,
         as: "voted_books",
       },
       {
         model: Book,
-        attributes: ["id", "title", "author", "price", "created_at"],
+        attributes: ["id", "title", "author", "created_at"],
       },
       {
         model: BookClub,
@@ -52,9 +52,9 @@ router.get("/", withAuth, (req, res) => {
       res.status(404).json({ message: "No user found with this id" });
       return;
     }
-    const userInfo = dbUserData.map((user) => user.get({ plain: true }));
+    const user = dbUserData.get({ plain: true });
 
-    res.render("dashboard", { userInfo, loggedIn: true });
+    res.render("dashboard", { user, loggedIn: true });
   });
 });
 
