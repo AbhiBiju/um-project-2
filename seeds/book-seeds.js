@@ -7,67 +7,66 @@ const bookdata = [
   {
     title: "Barrows Inc",
     author: "Khalil O'Hearn",
-    price: "15.03",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 3,
   },
   {
     title: "Runolfsdottir-Kulas",
     author: "Bel Meeson",
-    price: "19.26",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 3,
   },
   {
     title: "Gleason-Weber",
     author: "Niels Lasslett",
-    price: "8.00",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 1,
   },
   {
     title: "Altenwerth, Beahan and Kilback",
     author: "Tessie Schwaiger",
-    price: "13.86",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 1,
   },
   {
     title: "Mertz-Balistreri",
     author: "Johann Bowdon",
-    price: "18.09",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 1,
   },
   {
     title: "Hirthe, Bins and Farrell",
     author: "Cornall Buzek",
-    price: "12.36",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 1,
   },
   {
     title: "Jones LLC",
     author: "Hinda Dekeyser",
-    price: "10.64",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 2,
   },
   {
     title: "Feil-Daniel",
     author: "Sara-ann Sutlieff",
-    price: "14.76",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 2,
   },
   {
     title: "Swaniawski-Schmidt",
     author: "Thurston Bearblock",
-    price: "9.70",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 1,
   },
   {
     title: "Boyle Group",
     author: "Loria Pert",
-    price: "12.53",
+    review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus distinctio eveniet assumenda ratione asperiores natus porro similique dignissimos. Aliquid, voluptatem. Accusantium praesentium minus, ut saepe quisquam voluptates doloribus placeat ipsa!",
     user_id: 2,
   },
 ];
 
 // Need User.bulkcreate method
 const seedBooks = () => Book.bulkCreate(bookdata);
-
 
 module.exports = seedBooks;

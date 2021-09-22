@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbBookClubData) => res.json(dbBookClubData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -49,12 +49,12 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbBookClubData) => {
+      if (!dbBookClubData) {
         res.status(404).json({ message: "No club found with this id" });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbBookClubData);
     })
     .catch((err) => {
       console.log(err);
@@ -71,7 +71,7 @@ router.post("/", withAuth, (req, res) => {
     description: req.body.description,
     owner_id: req.session.owner_id,
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbBookClubData) => res.json(dbBookClubData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -103,12 +103,12 @@ router.put("/:id", withAuth, (req, res) => {
       },
     }
   )
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbBookClubData) => {
+      if (!dbBookClubData) {
         res.status(404).json({ message: "No club found with this id" });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbBookClubData);
     })
     .catch((err) => {
       console.log(err);
@@ -123,12 +123,12 @@ router.delete("/:id", withAuth, (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbBookClubData) => {
+      if (!dbBookClubData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbBookClubData);
     })
     .catch((err) => {
       console.log(err);

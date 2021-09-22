@@ -12,10 +12,6 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     book_name: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -50,6 +46,7 @@ Post.init(
         model: "user",
         key: "id",
       },
+      allowNull: false,
     },
   },
   {

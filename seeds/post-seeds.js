@@ -5,7 +5,6 @@ const { Post } = require("../models");
 // Add dummyData
 const postdata = [
   {
-    title: "Synergized intangible system engine",
     book_name: "Ugly",
     book_author: "Hank Oakeby",
     price: "14.13",
@@ -13,7 +12,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Persistent multi-tasking frame",
     book_name: "Father Goose",
     book_author: "Petronella Giffkins",
     price: "4.57",
@@ -21,7 +19,6 @@ const postdata = [
     user_id: 2,
   },
   {
-    title: "Front-line web-enabled installation",
     book_name: "Two-Lane Blacktop",
     book_author: "Codee Munro",
     price: "13.57",
@@ -30,7 +27,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Proactive didactic function",
     book_name: "Pirates of the Caribbean: Dead Man's Chest",
     book_author: "Benedicta Studders",
     price: "5.95",
@@ -38,7 +34,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Balanced tangible website",
     book_name: "Saint John of Las Vegas",
     book_author: "Rey Paine",
     price: "13.91",
@@ -47,7 +42,6 @@ const postdata = [
     user_id: 2,
   },
   {
-    title: "Public-key 24 hour software",
     book_name: "Paper Heart",
     book_author: "Bernetta Pritchard",
     price: "1.78",
@@ -55,7 +49,6 @@ const postdata = [
     user_id: 1,
   },
   {
-    title: "Organized stable migration",
     book_name: "Violent Cop (Sono otoko, kyôbô ni tsuki)",
     book_author: "Darcy Maystone",
     price: "12.54",
@@ -64,7 +57,6 @@ const postdata = [
     user_id: 2,
   },
   {
-    title: "Triple-buffered contextually-based policy",
     book_name: "Deadtime Stories",
     book_author: "Tucker Bulfoot",
     price: "3.48",
@@ -72,7 +64,6 @@ const postdata = [
     user_id: 2,
   },
   {
-    title: "Adaptive demand-driven moderator",
     book_name: "Red Shoes, The (Bunhongsin)",
     book_author: "Ludwig Nolder",
     price: "5.57",
@@ -80,7 +71,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Secured contextually-based firmware",
     book_name: "Dirty Dozen, The: The Fatal Mission",
     book_author: "Darcy O'Looney",
     price: "13.65",
@@ -89,7 +79,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Intuitive 4th generation service-desk",
     book_name: "Pat Garrett and Billy the Kid",
     book_author: "Ky Ondrus",
     price: "13.33",
@@ -97,7 +86,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Synergized optimizing interface",
     book_name: "Women Without Men (Zanan-e bedun-e mardan)",
     book_author: "Corliss Orae",
     price: "5.13",
@@ -105,7 +93,6 @@ const postdata = [
     user_id: 1,
   },
   {
-    title: "Fully-configurable radical hub",
     book_name: "Quick Change",
     book_author: "Sheena Pepperill",
     price: "14.03",
@@ -113,7 +100,6 @@ const postdata = [
     user_id: 1,
   },
   {
-    title: "Seamless encompassing array",
     book_name: "Overboard",
     book_author: "Reinaldo Castelyn",
     price: "12.61",
@@ -121,7 +107,6 @@ const postdata = [
     user_id: 1,
   },
   {
-    title: "Adaptive incremental success",
     book_name: "Fados",
     book_author: "Oswell Arntzen",
     price: "1.52",
@@ -129,7 +114,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Adaptive encompassing benchmark",
     book_name: "Tokyo Chorus (Tôkyô no kôrasu)",
     book_author: "Sheelah Millen",
     price: "13.47",
@@ -138,7 +122,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Diverse client-server matrix",
     book_name: "Still Life (Sanxia haoren)",
     book_author: "Addie Le Marchand",
     price: "6.78",
@@ -146,7 +129,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "User-friendly tertiary framework",
     book_name: "White Hell of Pitz Palu, The (Die weiße Hölle vom Piz Palü) ",
     book_author: "Becki Hymor",
     price: "3.56",
@@ -154,7 +136,6 @@ const postdata = [
     user_id: 1,
   },
   {
-    title: "Automated background functionalities",
     book_name: "Man Without a Past, The (Mies vailla menneisyyttä)",
     book_author: "Donica Dickons",
     price: "2.17",
@@ -162,7 +143,6 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Digitized global standardization",
     book_name: "I Want to Look Like That Guy",
     book_author: "Corie Warrington",
     price: "5.86",
