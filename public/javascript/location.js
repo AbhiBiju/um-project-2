@@ -1,17 +1,9 @@
 // This function uses the google geocode API to convert postal code to coordinates
 async function getCoordinates(event) {
+    console.log('whoop whoop');
     event.preventDefault();
-    // const userZipCode = await fetch(`/api/user`, {
-    //     method: 'GET',
-    //     // attributes: [
-    //     //     'id',
-    //     //     'zip_code'
-    //     // ]
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // })
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=33773&key=${process.env.GOOGLE_API_KEY}`);
+    const zipCode = document.querySelector('#zip-code').value.trim();
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg`);
 
     const convertedZip = await response.json();
     console.log(convertedZip);
@@ -20,6 +12,17 @@ async function getCoordinates(event) {
     console.log(latitude);
     const longitude = convertedZip.results[0].geometry.location.lng;
     console.log(longitude);
+    const coords = await fetch(`/api/location`, {
+        method: 'POST',
+        body: JSON.stringify({
+            latitude,
+            longitude
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return console.log(coords);
 
     const city = convertedZip.results[0].formatted_address;
     console.log(city);
@@ -32,23 +35,34 @@ async function getCoordinates(event) {
 }
 
 // This function gets the coordinates based off geolocation confirmed by the user when they click on 'near me' button
-async function getLocation(position) {
+async function getLocation() {
+    console.log('whomp whomp')
     if ('geolocation' in navigator) {
         console.log('geolocation available');
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(async function(position) {
             console.log(position.coords.latitude);
             const latitude = position.coords.latitude;
-            lat.push(latitude);
+
             console.log(position.coords.longitude);
             const longitude = position.coords.longitude;
-            lon.push(longitude);
+
+            const coords = await fetch(`/api/location`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    latitude,
+                    longitude
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
         });
     } else {
         console.log('geolocation not available');
     }
 }
 
-function initMap() {
+function initMap(coords) {
     // Use to set the center of the map to the current user's location / Need to get from stored values in table of lat and lon
     // const currentUser = {lat: user.latitude, lng: user.longitude};
     const currentUser = { lat: 27.88, lng: -82.8 };
@@ -64,18 +78,25 @@ function initMap() {
 
 // Data for the markers consisting of a name, a LatLng and a zIndex for the
 // order in which these markers should display on top of each other.
-const users = [
-    // [user.username, user.latitude, user.longitude, user.zIndex],
-    // Use match.floor to randomly generate zIndex
-    ["mmegroff0", 27.87986, -82.75092, 4],
-    ["lchinnery1", 27.90803, -82.75529, 5],
-    ["jhelin2", 27.84179, -82.79544, 3],
-    ["bsatterley3", 27.88301, -82.82732, 2],
-    ["hlozano4", 27.91560, -82.80650, 1],
-];
+// var users1 = [
+//     // [user.username, user.latitude, user.longitude, user.zIndex],
+//     // Use match.floor to randomly generate zIndex
+//     ["mmegroff0", 27.87986, -82.75092, 4],
+//     ["lchinnery1", 27.90803, -82.75529, 5],
+//     ["jhelin2", 27.84179, -82.79544, 3],
+//     ["bsatterley3", 27.88301, -82.82732, 2],
+//     ["hlozano4", 27.91560, -82.80650, 1],
+// ];
 
 // This creates the multiple markers for the map
-function setMarkers(map) {
+async function setMarkers(map) {
+    console.log('init');
+    const response = await fetch('/location', (data) => {
+        method: 'GET',
+        console.log('location', data);
+    });
+    const users = await response;
+    console.log(response);
     // Adds markers to the map.
     const image = {
         // url:`${userImg}`,
@@ -118,3 +139,5 @@ document.querySelector('.zip-submit').addEventListener('submit', getCoordinates)
 
 // Need to add a {{#if logedin}} button to the header with an id="near-me"
 document.querySelector('#near-me').addEventListener('click', getLocation);
+
+// getLocation();

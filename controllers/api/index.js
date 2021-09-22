@@ -11,7 +11,7 @@ router.use("/users", userRoutes);
 router.use("/posts", postRoutes);
 router.use("/books", bookRoutes);
 router.use("/bookclubs", bookclubRoutes);
-router.use("./location", locationRoutes)
+router.use("/location", locationRoutes);
 // router.use("/comments", commentRoutes);
 
 module.exports = router;

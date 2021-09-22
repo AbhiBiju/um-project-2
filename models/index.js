@@ -4,6 +4,7 @@ const Post = require("./Post");
 const Book = require("./Book");
 const BookClub = require("./BookClub");
 const BookClubMember = require("./BookClubMember");
+const Location = require("./Location");
 
 // Add associations
 User.hasMany(Post, {
@@ -12,6 +13,18 @@ User.hasMany(Post, {
 });
 
 Post.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+// ------------------------
+
+User.hasMany(Location, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+Location.belongsTo(User, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });

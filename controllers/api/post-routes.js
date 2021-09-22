@@ -23,6 +23,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  console.log('=====================');
   Post.findOne({
     where: {
       id: req.params.id,
@@ -49,6 +50,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
+  console.log('=====================');
   // expects {"book_name", "book_author", "price", "content", "user_id"}
   Post.create({
         book_name: req.body.book_name,
@@ -77,9 +79,10 @@ router.put("/upvote", withAuth, (req, res) => {
 */
 
 router.put("/:id", withAuth, (req, res) => {
+  console.log('=====================');
   Post.update(
     {
-            book_name: req.body.book_name,
+      book_name: req.body.book_name,
       book_author: req.body.book_author,
       price: req.body.price,
       content: req.body.content,
@@ -105,6 +108,7 @@ router.put("/:id", withAuth, (req, res) => {
 });
 
 router.delete("/:id", withAuth, (req, res) => {
+  console.log('=====================');
   console.log("id", req.params.id);
   Post.destroy({
     where: {

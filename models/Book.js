@@ -21,13 +21,13 @@ Book.init(
         len: [1],
       },
     },
-    price: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-      },
-    },
+    // price: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   validate: {
+    //     isNumeric: true,
+    //   },
+    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
