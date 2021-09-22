@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Tech News</title>
+  <title>BookMe!</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="/stylesheets/tailwind.css">
 </head>
@@ -16,7 +16,6 @@
           <a href="/" class="text-2xl font-semibold tracking-tight">Book<span class="text-green-500">Me</span></a>
         </h1>
         {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style text-2xl font-semibold tracking-tight">Logout</button>
         {{else}}
         <a href="/login" id="loginDisplay" class="text-2xl font-semibold tracking-tight">Login</a>
@@ -44,7 +43,7 @@
     <main>
       {{{ body }}}
     </main>
-    <footer>
+    <footer >
       Thanks for visiting!
     </footer>
   </div>
@@ -52,6 +51,8 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+
+  
 </body>
 
 </html>
