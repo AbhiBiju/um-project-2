@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookMe!</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/tailwind.css">
+</head>
+
+<body>
+    <header class="font-semibold text-xl tracking-tight text-center flex-col py-5">
+      <nav class="w-full flex justify-between px-20 py-5">
+        <h1 class="">
+          <a href="/" class="text-2xl font-semibold tracking-tight">Book<span class="text-green-500">Me</span></a>
+        </h1>
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style text-2xl font-semibold tracking-tight">Logout</button>
+        {{else}}
+        <a href="/login" id="loginDisplay" class="text-2xl font-semibold border border-green-500 bg-green-200 px-3 py-1 hover:text-white hover:bg-green-600 hover:border-green-100 rounded-lg tracking-tight">Login</a>
+        {{/if}}
+      </nav>
+      <ul class="inline-flex mx-auto justify-between py-2 lg:gap-5 gap-1 text-xl border border-bottom border-0 border-red-500">
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="/">Homepage</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="/dashboard">Dashboard</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="/club">Book Club</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="/location">Near Me</a>
+        </li>
+        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+          <a href="/profile">Profile</a>
+        </li>
+      </ul>
+    </header>
+  <div class="wrapper">
+    <main class="bg-blue-200 py-5">
+      {{{ body }}}
+    </main>
+    <footer >
+      Thanks for visiting!
+    </footer>
+  </div>
+  
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>

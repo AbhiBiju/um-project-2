@@ -1,0 +1,7 @@
+<ol class="post-list grid lg:grid-cols-2 grid-cols-1 px-3 md:gap-2 lg:gap-5">
+  {{#each posts as |post|}}
+  <li class="grid-span-1">
+    {{> post-info post }}
+  </li>
+  {{/each}}
+</ol>
