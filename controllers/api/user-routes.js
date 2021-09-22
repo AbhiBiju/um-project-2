@@ -34,12 +34,12 @@ router.get("/:id", (req, res) => {
           attributes: ["book_name"],
         },
       },
-      {
-        model: Book,
-        attributes: ["title"],
-        through: Vote,
-        as: "voted_books",
-      },
+      // {
+      //   model: Book,
+      //   attributes: ["title"],
+      //   through: Vote,
+      //   as: "voted_books",
+      // },
       {
         model: Book,
         attributes: ["id", "title", "author", "created_at"],
@@ -71,13 +71,13 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", upload.any(), async (req, res) => {
-  const imgUpload = await cloudinary.uploader.upload(req.files[0].path);
+  // const imgUpload = await cloudinary.uploader.upload(req.files[0].path);
 
   await User.create({
     username: req.body.username,
     email: req.body.email,
-    avatar: imgUpload.url,
-    zip_code: req.body.zip_code,
+    // avatar: imgUpload.url,
+    // zip_code: req.body.zip_code,
     password: req.body.password,
   })
     .then((dbUserData) => {

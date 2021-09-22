@@ -25,8 +25,8 @@ const seedAll = async () => {
     await seedComments();
     console.log("--------------");
 
-    await seedVotes();
-    console.log("--------------");
+    // await seedVotes();
+    // console.log("--------------");
 
     await seedBookClubs();
     console.log("\n--------------\n");
