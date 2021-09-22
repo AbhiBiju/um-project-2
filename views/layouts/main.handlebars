@@ -16,7 +16,6 @@
           <a href="/">Book<span class="text-green-500">Me</span></a>
         </h1>
         {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">Logout</button>
         {{else}}
         <a href="/login" id="loginDisplay">Login</a>
@@ -24,10 +23,10 @@
       </nav>
       <ul class="inline-flex justify-between py-5">
         <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
-          <a href="">Homepage</a>
+          <a href="/">Homepage</a>
         </li>
         <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
-          <a href="">Dashboard</a>
+          <a href="/dashboard">Dashboard</a>
         </li>
         <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
           <a href="">Book Club</a>
