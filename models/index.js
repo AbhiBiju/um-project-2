@@ -19,38 +19,38 @@ Post.belongsTo(User, {
 
 // ------------------------
 
-// User.belongsToMany(Book, {
-//   through: Vote,
-//   as: "voted_books",
+User.belongsToMany(Book, {
+  through: Vote,
+  as: "voted_books",
 
-//   foreignKey: "user_id",
-//   onDelete: "SET NULL",
-// });
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
 
-// Book.belongsToMany(User, {
-//   through: Vote,
-//   as: "voted_books",
-//   foreignKey: "book_id",
-//   onDelete: "SET NULL",
-// });
+Book.belongsToMany(User, {
+  through: Vote,
+  as: "voted_books",
+  foreignKey: "book_id",
+  onDelete: "SET NULL",
+});
 
-// Vote.belongsTo(User, {
-//   foreignKey: "user_id",
-//   onDelete: "SET NULL",
-// });
+Vote.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
 
-// Vote.belongsTo(Book, {
-//   foreignKey: "book_id",
-//   onDelete: "SET NULL",
-// });
+Vote.belongsTo(Book, {
+  foreignKey: "book_id",
+  onDelete: "SET NULL",
+});
 
-// User.hasMany(Vote, {
-//   foreignKey: "user_id",
-// });
+User.hasMany(Vote, {
+  foreignKey: "user_id",
+});
 
-// Book.hasMany(Vote, {
-//   foreignKey: "book_id",
-// });
+Book.hasMany(Vote, {
+  foreignKey: "book_id",
+});
 
 // ------------------------
 

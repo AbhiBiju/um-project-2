@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
       "author",
       "created_at",
       // [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.post_id)"), "vote_count"],
+      [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count"],
     ],
     include: [
       {
@@ -39,6 +40,7 @@ router.get("/:id", (req, res) => {
       "author",
       "created_at",
       // [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.post_id)"), "vote_count"],
+      [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count"],
     ],
     include: [
       {
@@ -74,16 +76,16 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-//commented out incase needed later
-// router.put("/upvote", withAuth, (req, res) => {
-//   // custom static method created in models/Book.js
-//   Book.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-//     .then((updatedVoteData) => res.json(updatedVoteData))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+// commented out incase needed later
+router.put("/upvote", withAuth, (req, res) => {
+  // custom static method created in models/Book.js
+  Book.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+    .then((updatedVoteData) => res.json(updatedVoteData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.put("/:id", withAuth, (req, res) => {
   Book.update(

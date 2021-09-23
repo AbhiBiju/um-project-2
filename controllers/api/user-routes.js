@@ -34,12 +34,12 @@ router.get("/:id", (req, res) => {
           attributes: ["book_name"],
         },
       },
-      // {
-      //   model: Book,
-      //   attributes: ["title"],
-      //   through: Vote,
-      //   as: "voted_books",
-      // },
+      {
+        model: Book,
+        attributes: ["title"],
+        through: Vote,
+        as: "voted_books",
+      },
       {
         model: Book,
         attributes: ["id", "title", "author", "created_at"],
