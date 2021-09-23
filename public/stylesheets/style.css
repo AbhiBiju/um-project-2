@@ -1,7 +1,12 @@
 
 * {
     box-sizing: border-box;
-  }
+}
+
+#map {
+    height: 500px;
+    width: 500px;
+}
   
   body, html {
     height: 100%;
@@ -36,7 +41,7 @@
   button:hover {
     background-color: #3486eb;
   } */
-  
+
   .post-list {
     margin: 0;
     padding: 0;

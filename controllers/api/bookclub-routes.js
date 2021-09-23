@@ -63,9 +63,8 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
+  // expects {'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
   BookClub.create({
-    title: req.body.title,
     name: req.body.name,
     genre: req.body.genre,
     description: req.body.description,
@@ -92,7 +91,6 @@ router.put("/upvote", withAuth, (req, res) => {
 router.put("/:id", withAuth, (req, res) => {
   BookClub.update(
     {
-      title: req.body.title,
       name: req.body.name,
       genre: req.body.genre,
       description: req.body.description,

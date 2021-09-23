@@ -31,6 +31,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  console.log('=====================');
   Post.findOne({
     where: {
       id: req.params.id,
@@ -81,6 +82,7 @@ router.post("/", withAuth, (req, res) => {
 });
 
 router.put("/:id", withAuth, (req, res) => {
+  console.log('=====================');
   Post.update(
     {
       book_name: req.body.book_name,
@@ -109,6 +111,7 @@ router.put("/:id", withAuth, (req, res) => {
 });
 
 router.delete("/:id", withAuth, (req, res) => {
+  console.log('=====================');
   console.log("id", req.params.id);
   Post.destroy({
     where: {

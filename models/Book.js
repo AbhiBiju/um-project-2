@@ -14,10 +14,10 @@ class Book extends Model {
         },
         attributes: [
           "id",
-          "book_name",
-          "book_author",
+          "title",
+          "author",
           "content",
-          "user_id",
+          "review",
           "created_at",
           [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count"],
         ],
@@ -29,6 +29,12 @@ class Book extends Model {
 // Create fields and columns for User model here
 Book.init(
   {
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    // },
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
