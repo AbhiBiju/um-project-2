@@ -230,6 +230,42 @@ router.get("/create-club", (req, res) => {
     });
 });
 
+router.get("/profile", (req, res) => {
+  BookClub.findAll({
+    attributes: ["id", "name", "genre", "description", "owner_id", "created_at"],
+    include: [
+      {
+        model: User,
+        as: "owner",
+        attributes: ["id", "username"],
+      },
+      {
+        model: User,
+        attributes: ["id", "username"],
+        as: "members",
+        through: BookClubMember,
+      },
+    ],
+  })
+    .then((dbClubData) => {
+      if (!dbClubData) {
+        res.status(404).json({ message: "No clubs found" });
+        return;
+      }
+
+      const clubs = dbClubData.map((club) => club.get({ plain: true }));
+
+      res.render("club", {
+        clubs,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
