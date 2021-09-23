@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
   }
@@ -176,3 +177,16 @@
     padding: 1%;
     font-size: 110%;
   }
+
+  .login-form{
+    display: inline-flexbox;
+    max-width: 24rem;
+    max-height: 32rem;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  

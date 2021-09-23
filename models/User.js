@@ -32,6 +32,10 @@ User.init(
         isEmail: true,
       },
     },
+    avatar: {
+      type: DataTypes.TEXT,
+      defaultValue: "https://res.cloudinary.com/dxqvdgvul/image/upload/v1632066194/defaultAvatar_wgzwzz.jpg",
+    },
     zip_code: {
       type: DataTypes.INTEGER,
       allowNull: true,
