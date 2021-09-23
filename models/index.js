@@ -32,7 +32,10 @@ Location.belongsTo(User, {
 
 // ------------------------
 
-User.hasMany(Book, {
+User.belongsToMany(Book, {
+  through: Vote,
+  as: "voted_books",
+
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });
@@ -41,14 +44,6 @@ Book.belongsToMany(User, {
   through: Vote,
   as: "voted_books",
   foreignKey: "book_id",
-  onDelete: "SET NULL",
-});
-
-User.belongsToMany(Book, {
-  through: Vote,
-  as: "voted_books",
-
-  foreignKey: "user_id",
   onDelete: "SET NULL",
 });
 
