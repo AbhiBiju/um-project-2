@@ -117,6 +117,8 @@ async function setMarkers(map) {
         type: "poly",
     };
 
+    const zIndex = Math.floor(Math.random() * 5) + 1;
+
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         console.log(user.latitude);
@@ -129,7 +131,7 @@ async function setMarkers(map) {
             icon: image,
             shape: shape,
             title: user[5],
-            // zIndex: user[3],
+            zIndex: zIndex
         });
         console.log(marker);
         // Add a click listener for each marker
