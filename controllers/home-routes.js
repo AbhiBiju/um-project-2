@@ -284,4 +284,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+router.get("/location", (req, res) => {
+  res.render("location");
+});
 module.exports = router;
