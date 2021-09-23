@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Vote, Book, BookClub, BookClubMember } = require("../models");
+const { Post, User, Comment, Vote, Book, BookClub, BookClubMember, Location } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
@@ -39,7 +39,7 @@ router.get("/", withAuth, (req, res) => {
       },
       {
         model: Book,
-        attributes: ["id", "title", "author", "price", "created_at"],
+        attributes: ["id", "title", "author", "created_at"],
       },
       {
         model: BookClub,
@@ -93,7 +93,7 @@ router.get("/:id", withAuth, (req, res) => {
       },
       {
         model: Book,
-        attributes: ["id", "title", "author", "price", "created_at", ],
+        attributes: ["id", "title", "author", "created_at"],
       },
       {
         model: BookClub,

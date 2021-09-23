@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
-  // expects: {"title", "author", "price", "user_id"},
+  // expects: {"author", "price", "user_id"},
   Book.create({
     title: req.body.title,
     author: req.body.author,

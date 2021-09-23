@@ -6,6 +6,7 @@ const Comment = require("./Comment");
 const Book = require("./Book");
 const BookClub = require("./BookClub");
 const BookClubMember = require("./BookClubMember");
+const Location = require("./Location");
 
 // Add associations
 User.hasMany(Post, {
@@ -19,10 +20,19 @@ Post.belongsTo(User, {
 
 // ------------------------
 
-User.belongsToMany(Book, {
-  through: Vote,
-  as: "voted_books",
+User.hasMany(Location, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
 
+Location.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+// ------------------------
+
+User.hasMany(Book, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });
@@ -31,6 +41,14 @@ Book.belongsToMany(User, {
   through: Vote,
   as: "voted_books",
   foreignKey: "book_id",
+  onDelete: "SET NULL",
+});
+
+User.belongsToMany(Book, {
+  through: Vote,
+  as: "voted_books",
+
+  foreignKey: "user_id",
   onDelete: "SET NULL",
 });
 
@@ -116,4 +134,4 @@ BookClub.belongsTo(User, {
 });
 
 // Add other models to export
-module.exports = { User, Post, Book, BookClub, BookClubMember, Vote, Comment };
+module.exports = { User, Post, Book, BookClub, BookClubMember, Vote, Comment, Location };
