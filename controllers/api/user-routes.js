@@ -71,13 +71,17 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", upload.any(), async (req, res) => {
-  // const imgUpload = await cloudinary.uploader.upload(req.files[0].path);
+  const imgUpload = '';
+
+  if(req.files){
+    imgUpload = await cloudinary.uploader.upload(req.files[0].path);
+  }
 
   await User.create({
     username: req.body.username,
     email: req.body.email,
     avatar: imgUpload.url || "https://res.cloudinary.com/dxqvdgvul/image/upload/v1632066194/defaultAvatar_wgzwzz.jpg",
-    zip_code: req.body.zip_code,
+    zip_code: req.body.zip_code || null,
     password: req.body.password,
   })
     .then((dbUserData) => {
