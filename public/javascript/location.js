@@ -97,7 +97,8 @@ async function setMarkers(map) {
     })
     const users = await response.json();
     // const users
-    console.log(response);
+    // console.log(data);
+    console.log(users);
     // Adds markers to the map.
     const image = {
         // url:`${userImg}`,
@@ -124,8 +125,8 @@ async function setMarkers(map) {
             map,
             icon: image,
             shape: shape,
-            title: user[0],
-            zIndex: user[3],
+            title: user[5],
+            // zIndex: user[3],
         });
         // Add a click listener for each marker
         marker.addListener("click", () => {

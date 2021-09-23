@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     console.log('======================');
-    Location.findAll({
+    Location.findOne({
         where: {
             id: req.params.id
         },
@@ -41,6 +41,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: User,
+                attributes: ['username']
             }
         ]
     })
