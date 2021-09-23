@@ -1,14 +1,15 @@
-<article class="flex-row h-full max-w-lg p-5 px-6 bg-white rounded-lg shadow-xl mx-auto">
+<article class="flex-row transform transition duration-600 hover:scale-105 h-full max-w-lg p-5 px-6 bg-green-50 rounded-lg shadow-xl mx-auto">
   <div>
-    <a href="/post/{{id}}">
+    <a href="/posts/{{id}}">
       <h2 class="font-bold text-xl">{{book_name}}</h2>
     </a>
-    <p class="text-gray-300">Author: {{book_author}}</p>
+    <p class="text-red-600">Author: {{book_author}}</p>
     <p>Price: ${{price}}.99</p>
     <p>{{content}}</p>
   </div>
   <div class="w-full flex justify-between pt-10">
-    <p class="bg-green-500 p-3 px-5 rounded-lg">Like</p>
-    <p class="bg-green-500 p-3 px-5 rounded-lg">Comment</p>
+    <a href="/posts/{{id}}">
+      <p class="bg-green-500 p-3 px-5 rounded-lg">Comments</p>
+    </a>
   </div>
 </article>

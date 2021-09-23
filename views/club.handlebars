@@ -1,2 +1,17 @@
-// If they don't have a book club, direct them to the create club page
+{{#if clubs.length}}
+<ol class='flex mx-auto flex-col justify-center'>
+<div class="text-center"><a href="/create-club" class="p-3 px-4 rounded-3xl bg-blue-300 border border-grey-400 hover:bg-blue-600 hover:text-white hover:border-blue-800">Create Your Own Club!</a></div>
+    {{#each clubs as |club|}}
+    <li class='p-5 flex-col text-center transform transition duration-600 hover:scale-105 justify-center'>
+      {{> club-info club}}
+      <a href='' id='{{id}}' class="join-btn p-3 px-4 rounded-3xl bg-blue-300 border border-grey-400 hover:bg-blue-600 hover:text-white hover:border-blue-800">Join Club</a>
+    </li>
+    {{/each}}
+  </ol>
+{{/if}}
+{{#unless clubs.length}}
+<h2>No Clubs Found!</h2>
+  <a href="/create-club/">Click here to create a club</a>
+{{/unless}}
 
+<script src="/javascript/join-club.js"></script>

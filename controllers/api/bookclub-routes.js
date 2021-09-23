@@ -65,11 +65,23 @@ router.get("/:id", (req, res) => {
 router.post("/", withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
   BookClub.create({
-    title: req.body.title,
     name: req.body.name,
     genre: req.body.genre,
     description: req.body.description,
-    owner_id: req.session.owner_id,
+    owner_id: req.session.user_id,
+  })
+    .then((dbBookClubData) => res.json(dbBookClubData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post("/join", withAuth, (req, res) => {
+  // expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
+  BookClubMember.create({
+    bookclub_id: req.body.club_id,
+    user_id: req.session.user_id,
   })
     .then((dbBookClubData) => res.json(dbBookClubData))
     .catch((err) => {

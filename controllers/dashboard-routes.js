@@ -16,6 +16,7 @@ router.get("/", withAuth, (req, res) => {
       {
         model: Post,
         attributes: ["id", "book_name", "book_author", "price", "content", "created_at"],
+        order: [["id", "DESC"]],
       },
       {
         model: Comment,
@@ -34,6 +35,7 @@ router.get("/", withAuth, (req, res) => {
       {
         model: Book,
         attributes: ["id", "title", "author", "created_at"],
+        order: [["id", "DESC"]],
       },
       {
         model: BookClub,
@@ -56,39 +58,6 @@ router.get("/", withAuth, (req, res) => {
 
     res.render("dashboard", { user, loggedIn: true });
   });
-});
-
-router.get("/edit/books/:id", withAuth, (req, res) => {
-  Book.findByPk(req.params.id, {
-    attributes: [
-      "title",
-      "author",
-      "price",
-      "created_at",
-      [(sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count")],
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ["username"],
-      },
-    ],
-  })
-    .then((dbBookData) => {
-      if (dbBookData) {
-        const book = dbBookData.get({ plain: true });
-
-        res.render("edit-book", {
-          book,
-          loggedIn: true,
-        });
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch((err) => {
-      res.status(500).json(err);
-    });
 });
 
 router.get("/edit/books/:id", withAuth, (req, res) => {
@@ -165,7 +134,7 @@ router.get("/edit/bookclubs/:id", withAuth, (req, res) => {
       if (dbBookClubData) {
         const bookclub = dbBookClubData.get({ plain: true });
 
-        res.render("edit-bookclub", {
+        res.render("edit-club", {
           bookclub,
           loggedIn: true,
         });
