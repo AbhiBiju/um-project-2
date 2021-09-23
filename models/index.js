@@ -75,4 +75,4 @@ BookClub.belongsTo(User, {
 });
 
 // Add other models to export
-module.exports = { User, Post, Book, BookClub, BookClubMember };
+module.exports = { User, Post, Book, BookClub, BookClubMember, Location };

@@ -25,7 +25,7 @@ Location.init(
     zIndex: {
       // Need to limit increment
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
         type: DataTypes.INTEGER,

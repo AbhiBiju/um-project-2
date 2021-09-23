@@ -91,11 +91,12 @@ function initMap(coords) {
 // This creates the multiple markers for the map
 async function setMarkers(map) {
     console.log('init');
-    const response = await fetch('/location', (data) => {
+    let response = await fetch('/api/location', (data) => {
         method: 'GET',
         console.log('location', data);
-    });
-    const users = await response;
+    })
+    const users = await response.json();
+    // const users
     console.log(response);
     // Adds markers to the map.
     const image = {

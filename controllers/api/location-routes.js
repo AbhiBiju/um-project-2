@@ -3,7 +3,7 @@ const sequelize = require("../../config/connection");
 const { User, Location} = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
     console.log('======================');
     Location.findAll({
     attributes: [
@@ -15,6 +15,7 @@ router.get('/', withAuth, (req, res) => {
     include: [
         {
             model: User,
+            attributes: ['username']
         }
     ]
     })
@@ -25,7 +26,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-router.get('/:id', withAuth, (req, res) => {
+router.get('/:id', (req, res) => {
     console.log('======================');
     Location.findAll({
         where: {
@@ -50,7 +51,7 @@ router.get('/:id', withAuth, (req, res) => {
     });
 });
     
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     console.log('Success');
     Location.create({
         latitude: req.body.latitude,
@@ -64,7 +65,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.post('/:id', withAuth, (req, res) => {
+router.post('/:id', (req, res) => {
     console.log('Successful');
     Location.update({
         latitude: req.body.latitude,
