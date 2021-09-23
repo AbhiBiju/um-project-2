@@ -119,15 +119,19 @@ async function setMarkers(map) {
 
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
-
+        console.log(user.latitude);
+        let userLat = Number(user.latitude);
+        let userLng = Number(user.longitude);
+        console.log(userLat, userLng);
         const marker = new google.maps.Marker({
-            position: { lat: user[1], lng: user[2] },
+            position: { lat: userLat, lng: userLng },
             map,
             icon: image,
             shape: shape,
             title: user[5],
             // zIndex: user[3],
         });
+        console.log(marker);
         // Add a click listener for each marker
         marker.addListener("click", () => {
             console.log("Marker clicked");
