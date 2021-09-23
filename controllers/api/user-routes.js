@@ -71,9 +71,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", upload.any(), async (req, res) => {
-  const imgUpload = '';
-
-  if(req.files){
+  let imgUpload = "";
+  console.log(req);
+  console.log("\n");
+  console.log(req.body);
+  console.log("\n");
+  if (req.files[0]) {
     imgUpload = await cloudinary.uploader.upload(req.files[0].path);
   }
 
