@@ -1,11 +1,15 @@
-<article class="post h-full max-w-xl p-12 px-6 bg-white rounded-lg shadow-xl mx-auto">
-    <div>
-      <a href="/post/{{id}}"><h2>{{title}}</h2></a>
-    </div >
-      <p class="font-bold text-xl">{{book_name}}</p>
-      <p class="text-green-800">Author: {{book_author}}</p>
-      <p>Price: ${{price}}.99</p>
-      <p class="text-lg">{{content}}</p>
-      <div class="w-full flex justify-between">
-      </div>
+<article class="flex-row transform transition duration-600 hover:scale-105 h-full max-w-lg p-5 px-6 bg-green-50 rounded-lg shadow-xl mx-auto">
+  <div>
+    <a href="/posts/{{id}}">
+      <h2 class="font-bold text-xl">{{book_name}}</h2>
+    </a>
+    <p class="text-red-600">Author: {{book_author}}</p>
+    <p>Price: ${{price}}.99</p>
+    <p>{{content}}</p>
+  </div>
+  <div class="w-full flex justify-between pt-10">
+    <a href="/posts/{{id}}">
+      <p class="bg-green-500 p-3 px-5 rounded-lg">Comments</p>
+    </a>
+  </div>
 </article>

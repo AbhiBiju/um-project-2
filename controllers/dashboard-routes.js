@@ -3,12 +3,6 @@ const sequelize = require("../config/connection");
 const { Post, User, Comment, Vote, Book, BookClub, BookClubMember, Location } = require("../models");
 const withAuth = require("../utils/auth");
 
-// get all posts for dashboard
-
-router.get('/', (req, res) => {
-  res.render('dashboard');
-});
-
 // get all user info for dashboard
 router.get("/", withAuth, (req, res) => {
   console.log(req.session);
@@ -16,66 +10,13 @@ router.get("/", withAuth, (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
-      id: req.params.id,
+      id: req.session.user_id,
     },
     include: [
       {
         model: Post,
         attributes: ["id", "book_name", "book_author", "price", "content", "created_at"],
-      },
-      {
-        model: Comment,
-        attributes: ["id", "comment_text", "created_at"],
-        include: {
-          model: Post,
-          attributes: ["book_name"],
-        },
-      },
-      {
-        model: Post,
-        attributes: ["book_name"],
-        through: Vote,
-        as: "voted_books",
-      },
-      {
-        model: Book,
-        attributes: ["id", "title", "author", "created_at"],
-      },
-      {
-        model: BookClub,
-        as: "started_clubs",
-        attributes: ["name", "genre", "description", "owner_id"],
-      },
-      {
-        model: BookClub,
-        attributes: ["name", "owner_id"],
-        as: "joined_clubs",
-        through: BookClubMember,
-      },
-    ],
-  }).then((dbUserData) => {
-    if (!dbUserData) {
-      res.status(404).json({ message: "No user found with this id" });
-      return;
-    }
-    const userInfo = dbUserData.map((user) => user.get({ plain: true }));
-
-    res.render("dashboard", { userInfo, loggedIn: true });
-  });
-});
-
-router.get("/:id", withAuth, (req, res) => {
-  console.log(req.session);
-  console.log("======================");
-  User.findOne({
-    attributes: { exclude: ["password"] },
-    where: {
-      id: req.params.id,
-    },
-    include: [
-      {
-        model: Post,
-        attributes: ["id", "title", "book_name", "book_author", "price", "content", "created_at"],
+        order: [["id", "DESC"]],
       },
       {
         model: Comment,
@@ -94,6 +35,7 @@ router.get("/:id", withAuth, (req, res) => {
       {
         model: Book,
         attributes: ["id", "title", "author", "created_at"],
+        order: [["id", "DESC"]],
       },
       {
         model: BookClub,
@@ -112,41 +54,10 @@ router.get("/:id", withAuth, (req, res) => {
       res.status(404).json({ message: "No user found with this id" });
       return;
     }
-    res.render(dbUserData);
+    const user = dbUserData.get({ plain: true });
+
+    res.render("dashboard", { user, loggedIn: true });
   });
-});
-
-router.get("/edit/books/:id", withAuth, (req, res) => {
-  Book.findByPk(req.params.id, {
-    attributes: [
-      "title",
-      "author",
-      "price",
-      "created_at",
-      [(sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count")],
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ["username"],
-      },
-    ],
-  })
-    .then((dbBookData) => {
-      if (dbBookData) {
-        const book = dbBookData.get({ plain: true });
-
-        res.render("edit-book", {
-          book,
-          loggedIn: true,
-        });
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch((err) => {
-      res.status(500).json(err);
-    });
 });
 
 router.get("/edit/books/:id", withAuth, (req, res) => {
@@ -223,7 +134,7 @@ router.get("/edit/bookclubs/:id", withAuth, (req, res) => {
       if (dbBookClubData) {
         const bookclub = dbBookClubData.get({ plain: true });
 
-        res.render("edit-bookclub", {
+        res.render("edit-club", {
           bookclub,
           loggedIn: true,
         });

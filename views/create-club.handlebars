@@ -1,0 +1,29 @@
+<section class='flex flex-col justify-center text-center items-center'>
+  <h2 class='font-bold text-2xl text-center'>Create A Club</h2>
+  <form class="new-club-form w-1/2">
+    <div class='py-2 flex flex-row justify-end'>
+      <label class='px-4' for="club-name">Club Name: </label>
+      <input class='rounded-lg p-2' type="text" id="club-name" name="club-name" />
+    </div>
+    <div class='py-2 flex flex-row justify-end'>
+      <label class='px-4' for="club-genre">Genre | Topic: </label>
+      <input class='rounded-lg p-2' id="club-genre" name="club-genre" />
+    </div>
+    <div class='py-2 flex flex-row justify-end'>
+      <label class='px-4' for="club-desc">Description: </label>
+      <textarea class='rounded-lg p-2' id="club-desc" name="club-desc"></textarea>
+    </div>
+    <button type="submit" class="btn bg-green-100 rounded-2xl p-2 px-5 border border-green-700 hover:border-green-400 hover:text-white hover:bg-green-800">Create</button>
+  </form>
+</section>
+
+<ol>
+    {{#each clubs as |club|}}
+    <li class='py-5'>
+      {{> club-info club}}
+    </li>
+    {{/each}}
+  </ol>
+
+<script src="/javascript/add-club.js"></script>
+<script src="/javascript/edit-club.js"></script>

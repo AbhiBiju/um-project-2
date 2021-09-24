@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
       "title",
       "author",
       "created_at",
-      // [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.post_id)"), "vote_count"],
       [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count"],
     ],
     include: [
@@ -39,7 +38,6 @@ router.get("/:id", (req, res) => {
       "title",
       "author",
       "created_at",
-      // [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.post_id)"), "vote_count"],
       [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE book.id = vote.book_id)"), "vote_count"],
     ],
     include: [
@@ -76,7 +74,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-// commented out incase needed later
+//commented out incase needed later
 router.put("/upvote", withAuth, (req, res) => {
   // custom static method created in models/Book.js
   Book.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })

@@ -1,0 +1,21 @@
+{{> post-info post}}
+
+{{#if loggedIn}}
+<form class="p-5 comment-form">
+  <div class='flex flex-col'>
+    Comment:
+    <textarea class='rounded-sm resize-none p-2' name="comment-body"></textarea>
+  </div>
+  <div class='py-4'>
+    <button class="bg-green-100 rounded-2xl p-3 border border-green-700 hover:border-green-400 hover:text-white hover:bg-green-800" type="submit">add comment</button>
+  </div>
+</form>
+{{/if}}
+<div class="p-5">
+  
+  {{> comments post.comments}}
+</div>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
