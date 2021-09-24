@@ -5,6 +5,7 @@ const seedBooks = require("./book-seeds.js");
 const seedVotes = require("./vote-seeds");
 const seedBookClubs = require("./bookclub-seeds.js");
 const seedBookClubMembers = require("./bookclubmember-seeds.js");
+const seedLocation = require("./location-seeds.js");
 
 const sequelize = require("../config/connection");
 
@@ -32,6 +33,9 @@ const seedAll = async () => {
     console.log("\n--------------\n");
 
     await seedBookClubMembers();
+    console.log("\n--------------\n");
+
+    await seedLocation();
     console.log("\n--------------\n");
 
     process.exit(0);
