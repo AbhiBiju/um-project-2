@@ -24,10 +24,10 @@ const seedAll = async () => {
     console.log("\n--------------\n");
 
     await seedComments();
-    console.log("--------------");
+    console.log("\n--------------\n");
 
     await seedVotes();
-    console.log("--------------");
+    console.log("\n--------------\n");
 
     await seedBookClubs();
     console.log("\n--------------\n");

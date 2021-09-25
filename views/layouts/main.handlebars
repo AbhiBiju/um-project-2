@@ -1,59 +1,88 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="stylesheet" href="/stylesheets/tailwind.css">
-  <title>BookMe!</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/tailwind.css" />
+    <title>BookMe!</title>
+  </head>
 
-<body>
-    <header class="font-semibold text-xl tracking-tight text-center flex-col py-5">
-      <nav class="w-full text-center flex justify-around px-20 py-5">
+  <body class="bg-white">
+    <header class="font-semibold text-xl w-full bg-white tracking-tight text-center flex-col py-2">
+      <nav class="w-full text-center flex justify-around px-20 py-3">
         <h1 class="">
           <a href="/" class="text-2xl font-semibold tracking-tight">Book<span class="text-green-500">Me</span></a>
         </h1>
         {{#if loggedIn}}
-        <button id="logout" class="absolute right-10 btn-no-style text-2xl font-semibold tracking-tight">Logout</button>
+          <button
+            id="logout"
+            class="absolute right-10 btn-no-style text-2xl font-semibold tracking-tight"
+          >Logout</button>
         {{else}}
-        <a href="/login" id="loginDisplay" class="absolute right-10 float-right text-2xl font-semibold border border-green-500 bg-green-200 px-3 hover:text-white hover:bg-green-600 hover:border-green-100 rounded-lg tracking-tight">Login</a>
+          <a
+            href="/login"
+            id="loginDisplay"
+            class="absolute right-10 float-right text-2xl font-semibold border border-green-500 bg-green-200 px-3 hover:text-white hover:bg-green-600 hover:border-green-100 rounded-lg tracking-tight"
+          >Login</a>
         {{/if}}
       </nav>
-      <ul class="grid grid-cols-2 md:grid-cols-5 py-4">
-        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+      <ul class="grid border-t-4 border-red-500 grid-cols-2 text-2xl w-99 mx-auto md:grid-cols-5 py-3">
+        <li
+          class="px-4 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+        >
           <a href="/">Homepage</a>
         </li>
-        <li class="px-1 lg:px-4 text-green-400 hover:text-green-700 transform transition duration-600 hover:scale-125">
+        <li
+          class="px-1 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 lg:px-4 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+        >
           <a href="/dashboard">Dashboard</a>
         </li>
-        <li class="px-1 lg:px-4 text-green-400 hover:text-green-700 transform transition duration-600 hover:scale-125">
+        <li
+          class="px-1 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 lg:px-4 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+        >
           <a href="/club">Book Club</a>
         </li>
-        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+        <li
+          class="px-4 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+        >
           <a href="/profile">Profile</a>
         </li>
-        <li class="px-4 text-green-300 hover:text-green-700 transform transition duration-600 hover:scale-125">
+        <li
+          class="px-4 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+        >
           <a id="near-me" href="/location">Near Me</a>
         </li>
       </ul>
       {{!-- {{/if}} --}}
     </header>
-  <div class="bg-gray-400">
-    <main class="h-full">
-      {{{ body }}}
-    </main>
-    <footer>
-      Made with ❤ 2021 All rights reserved. Abhinav Biju | Diana Salas | Malik Harris | Tysean Hill.
-    </footer>
-  </div>
-  
-  {{!-- <script src="/javascript/location.js"></script> --}}
-  {{#if loggedIn}}
-  <script src="/javascript/logout.js"></script>
-  {{/if}}
-</body>
+    <div class="wrapper bg-gradient-to-b from-gray-600 to-gray-400">
+      <main class="">
+        {{{body}}}
+      </main>
+      <footer>
+        Made with ❤ 2021 All rights reserved.
+        <a
+          class="px-2 mx-2 transition transform hover:scale-110 transition-duration-400 bg-gradient-to-b from-blue-400 to-red-400 hover:from-green-500 hover:to-blue-400 rounded-xl hover:text-white p-1"
+          href="https://www.linkedin.com/in/abhinavbiju/"
+        >Abhinav Biju</a>
+        |
+        <a class="px-2 mx-2 transition transform hover:scale-110 transition-duration-400 bg-gradient-to-b from-blue-400 to-red-400 hover:from-green-500 hover:to-blue-400 rounded-xl hover:text-white p-1" href="">Diana Salas</a>
+        |
+        <a
+          class="px-2 mx-2 transition transform hover:scale-110 transition-duration-400 bg-gradient-to-b from-blue-400 to-red-400 hover:from-green-500 hover:to-blue-400 rounded-xl hover:text-white p-1"
+          href="https://www.linkedin.com/in/malik-harris-452822213/"
+        >Malik Harris</a>
+        |
+        <a class="px-2 mx-2 transition transform hover:scale-110 transition-duration-400 bg-gradient-to-b from-blue-400 to-red-400 hover:from-green-500 hover:to-blue-400 rounded-xl hover:text-white p-1" href="http://www.linkedin.com/in/tysean-hill">Tysean Hill</a>.
+      </footer>
+    </div>
+
+    {{! <script src="/javascript/location.js"></script> }}
+    {{#if loggedIn}}
+      <script src="/javascript/logout.js"></script>
+    {{/if}}
+  </body>
 
 </html>

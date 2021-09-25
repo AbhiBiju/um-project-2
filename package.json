@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seeds/index.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build-css": "tailwindcss build style.css -o public/src/style.css",
+    "prod": "NODE_ENV=production postcss public/src/style.css -o public/stylesheets/tailwind.css"
   },
   "repository": {
     "type": "git",
