@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Post, User, Comment, Vote, Book, BookClub, BookClubMember} = require("../models");
+const withAuth = require("../utils/auth");
 
 // get all posts for homepage
 router.get("/", (req, res) => {
@@ -194,7 +195,7 @@ router.get("/club", (req, res) => {
     });
 });
 
-router.get("/create-club", (req, res) => {
+router.get("/create-club", withAuth, (req, res) => {
   BookClub.findAll({
     attributes: ["id", "name", "genre", "description", "owner_id", "created_at"],
     include: [
@@ -230,33 +231,58 @@ router.get("/create-club", (req, res) => {
     });
 });
 
-router.get("/profile", (req, res) => {
-  BookClub.findAll({
-    attributes: ["id", "name", "genre", "description", "owner_id", "created_at"],
+router.get("/profile", withAuth, (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.session.user_id,
+    },
     include: [
       {
-        model: User,
-        as: "owner",
-        attributes: ["id", "username"],
+        model: Post,
+        attributes: ["id", "book_name", "book_author", "price", "content", "created_at"],
       },
       {
-        model: User,
-        attributes: ["id", "username"],
-        as: "members",
+        model: Comment,
+        attributes: ["id", "comment_text", "created_at"],
+        include: {
+          model: Post,
+          attributes: ["book_name"],
+        },
+      },
+      {
+        model: Book,
+        attributes: ["title"],
+        through: Vote,
+        as: "voted_books",
+      },
+      {
+        model: Book,
+        attributes: ["id", "title", "author", "created_at"],
+      },
+      {
+        model: BookClub,
+        as: "started_clubs",
+        attributes: ["name", "genre", "description", "owner_id"],
+      },
+      {
+        model: BookClub,
+        attributes: ["name", "owner_id"],
+        as: "joined_clubs",
         through: BookClubMember,
       },
     ],
   })
-    .then((dbClubData) => {
-      if (!dbClubData) {
+    .then((dbUserData) => {
+      if (!dbUserData) {
         res.status(404).json({ message: "No clubs found" });
         return;
       }
 
-      const clubs = dbClubData.map((club) => club.get({ plain: true }));
+      const user = dbUserData.get({ plain: true });
 
-      res.render("club", {
-        clubs,
+      res.render("profile", {
+        user,
         loggedIn: req.session.loggedIn,
       });
     })
