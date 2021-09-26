@@ -1,79 +1,68 @@
 // This function uses the google geocode API to convert postal code to coordinates
 async function getCoordinates(event) {
-    console.log('whoop whoop');
-    event.preventDefault();
-    const zipCode = document.querySelector('#zip-code').value.trim();
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg`);
+  event.preventDefault();
+  const zipCode = document.querySelector("#zip-code").value.trim();
+  const response = await fetch(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg`
+  );
 
-    const convertedZip = await response.json();
-    console.log(convertedZip);
-    // Need to have lat and lon saved to table related to User
-    const latitude = convertedZip.results[0].geometry.location.lat;
-    console.log(latitude);
-    const longitude = convertedZip.results[0].geometry.location.lng;
-    console.log(longitude);
-    const coords = await fetch(`/api/location`, {
-        method: 'POST',
-        body: JSON.stringify({
-            latitude,
-            longitude
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    return console.log(coords);
+  const convertedZip = await response.json();
+  // Need to have lat and lon saved to table related to User
+  const latitude = convertedZip.results[0].geometry.location.lat;
+  const longitude = convertedZip.results[0].geometry.location.lng;
+  const coords = await fetch(`/api/location`, {
+    method: "POST",
+    body: JSON.stringify({
+      latitude,
+      longitude,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    const city = convertedZip.results[0].formatted_address;
-    console.log(city);
-    // This separates the city information and puts it in an array
-    const cityName = city.split(' ');
-    console.log(cityName);
-    // This takes out the city and state from the split need to display on page
-    const dispCity = cityName[0] + ' ' + cityName[1];
-    console.log(dispCity);
+  // const city = convertedZip.results[0].formatted_address;
+  // // This separates the city information and puts it in an array
+  // const cityName = city.split(' ');
+  // // This takes out the city and state from the split need to display on page
+  // const dispCity = cityName[0] + ' ' + cityName[1];
 }
 
 // This function gets the coordinates based off geolocation confirmed by the user when they click on 'near me' button
 async function getLocation() {
-    console.log('whomp whomp')
-    if ('geolocation' in navigator) {
-        console.log('geolocation available');
-        navigator.geolocation.getCurrentPosition(async function(position) {
-            console.log(position.coords.latitude);
-            const latitude = position.coords.latitude;
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(async function (position) {
+      const latitude = position.coords.latitude;
 
-            console.log(position.coords.longitude);
-            const longitude = position.coords.longitude;
+      const longitude = position.coords.longitude;
 
-            const coords = await fetch(`/api/location`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    latitude,
-                    longitude
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-        });
-    } else {
-        console.log('geolocation not available');
-    }
+      const coords = await fetch(`/api/location`, {
+        method: "POST",
+        body: JSON.stringify({
+          latitude,
+          longitude,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    });
+  } else {
+  }
 }
 
 function initMap(coords) {
-    // Use to set the center of the map to the current user's location / Need to get from stored values in table of lat and lon
-    // const currentUser = {lat: user.latitude, lng: user.longitude};
-    const currentUser = { lat: 27.88, lng: -82.8 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-        // This sets the zoom distance in the map
-        zoom: 10,
-        // This sets the center of the map for the current location being searched
-        center: currentUser,
-    });
-    // This calls for the markers to be created and placed on the map after the map has been created
-    setMarkers(map);
+  // Use to set the center of the map to the current user's location / Need to get from stored values in table of lat and lon
+  // const currentUser = {lat: user.latitude, lng: user.longitude};
+  const currentUser = { lat: 27.88, lng: -82.8 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    // This sets the zoom distance in the map
+    zoom: 10,
+    // This sets the center of the map for the current location being searched
+    center: currentUser,
+  });
+  // This calls for the markers to be created and placed on the map after the map has been created
+  setMarkers(map);
 }
 
 // Data for the markers consisting of a name, a LatLng and a zIndex for the
@@ -90,62 +79,52 @@ function initMap(coords) {
 
 // This creates the multiple markers for the map
 async function setMarkers(map) {
-    console.log('init');
-    let response = await fetch('/api/location', (data) => {
-        method: 'GET',
-        console.log('location', data);
-    })
-    const users = await response.json();
-    // const users
-    // console.log(data);
-    console.log(users);
-    // Adds markers to the map.
-    const image = {
-        // url:`${userImg}`,
-        url: "../img/BookHeartPin2.png",
-        //url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-        // This marker is 20 pixels wide by 32 pixels high.
-        size: new google.maps.Size(20, 32),
-        // The origin for this image is (0, 0).
-        origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(0, 32),
-    };
-    // Shapes define the clickable region of the icon.
-    const shape = {
-        coords: [1, 1, 1, 20, 18, 20, 18, 1],
-        type: "poly",
-    };
+  let response = await fetch("/api/location", (data) => {
+    method: "GET";
+  });
+  const users = await response.json();
+  // const users
+  // Adds markers to the map.
+  const image = {
+    // url:`${userImg}`,
+    url: "../img/BookHeartPin2.png",
+    //url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+    // This marker is 20 pixels wide by 32 pixels high.
+    size: new google.maps.Size(20, 32),
+    // The origin for this image is (0, 0).
+    origin: new google.maps.Point(0, 0),
+    // The anchor for this image is the base of the flagpole at (0, 32).
+    anchor: new google.maps.Point(0, 32),
+  };
+  // Shapes define the clickable region of the icon.
+  const shape = {
+    coords: [1, 1, 1, 20, 18, 20, 18, 1],
+    type: "poly",
+  };
 
-    const zIndex = Math.floor(Math.random() * 5) + 1;
+  const zIndex = Math.floor(Math.random() * 5) + 1;
 
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        console.log(user.latitude);
-        let userLat = Number(user.latitude);
-        let userLng = Number(user.longitude);
-        console.log(userLat, userLng);
-        const marker = new google.maps.Marker({
-            position: { lat: userLat, lng: userLng },
-            map,
-            icon: image,
-            shape: shape,
-            title: user[5],
-            zIndex: zIndex
-        });
-        console.log(marker);
-        // Add a click listener for each marker
-        marker.addListener("click", () => {
-            console.log("Marker clicked");
-        });
-    }
-    
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    let userLat = Number(user.latitude);
+    let userLng = Number(user.longitude);
+    const marker = new google.maps.Marker({
+      position: { lat: userLat, lng: userLng },
+      map,
+      icon: image,
+      shape: shape,
+      title: user[5],
+      zIndex: zIndex,
+    });
+    // Add a click listener for each marker
+    marker.addListener("click", () => {});
+  }
 }
 
 // This method adds an event listener to the zip code submit button to call the getCoordinates function when clicked
-document.querySelector('.zip-submit').addEventListener('submit', getCoordinates);
+document.querySelector(".zip-submit").addEventListener("submit", getCoordinates);
 
 // Need to add a {{#if logedin}} button to the header with an id="near-me"
-document.querySelector('#near-me').addEventListener('click', getLocation);
+document.querySelector("#near-me").addEventListener("click", getLocation);
 
 // getLocation();

@@ -5,7 +5,6 @@ for (btn of submits) {
 
 async function JoinClubHandler(event) {
   let club_id = event.target.id;
-  console.log(club_id);
 
   const response = await fetch(`/api/bookclubs/join`, {
     method: "POST",

@@ -53,7 +53,6 @@ router.get('/:id', (req, res) => {
 });
     
 router.post('/', (req, res) => {
-    console.log('Success');
     Location.create({
         latitude: req.body.latitude,
         longitude: req.body.longitude,
@@ -67,7 +66,6 @@ router.post('/', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-    console.log('Successful');
     Location.update({
         latitude: req.body.latitude,
         longitude: req.body.longitude,

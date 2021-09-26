@@ -1,17 +1,11 @@
 async function signupFormHandler(event) {
   event.preventDefault();
 
-  console.log("hello");
-
   const username = document.querySelector("#username-signup").value.trim();
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
   const input = document.querySelector("#file").files;
   const zipCode = document.querySelector("#zipCode").value.trim();
-
-  console.log(username + " " + email + " " + password + " " + zipCode);
-  console.log(input);
-  console.log(input[0]);
 
   if (username && email && password) {
     let formData = new FormData();

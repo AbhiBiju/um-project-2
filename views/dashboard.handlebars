@@ -1,4 +1,4 @@
-<div class='flex flex-row justify-center px-4 text-center'>
+<div class='flex flex-col md:flex-row justify-center px-4 text-center'>
   <section class='px-4 flex flex-col justify-end text-center'>
     <h2>Create New Post</h2>
     <form class="new-post-form flex flex-col justify-end">
@@ -24,7 +24,6 @@
   
   <section class='px-4 flex flex-col'>
     <h2>Add A Book</h2>
-  
     <form class="new-book-form flex flex-col justify-end">
       <div class='py-2 flex flex-row justify-end'>
         <label for="title">Book Title: </label>
@@ -45,12 +44,12 @@
 
 {{#if user.posts}}
 <section class='text-center'>
-  <h2>Your Posts</h2>
+  <h2 class='text-2xl font-bolder pt-5'>Your Posts</h2>
   <ol>
     {{#each user.posts as |post|}}
     <li class='p-5 flex-col text-center justify-center'>
       {{> post-info post}}
-      <a href="/dashboard/edit/posts/{{post.id}}" class="edit-link bg-green-100 rounded-2xl p-2 px-5 border border-green-700 hover:border-green-400 hover:text-white hover:bg-green-800 py-5">Edit post</a>
+      <a href="/dashboard/edit/posts/{{post.id}}" class="bg-green-100 rounded-2xl p-2 px-5 border border-green-700 hover:border-green-400 hover:text-white hover:bg-green-800 py-5">Edit post</a>
     </li>
     {{/each}}
   </ol>
@@ -59,12 +58,12 @@
 
 {{#if user.books}}
 <section class='text-center'>
-  <h2>Your Books</h2>
+  <h2 class='text-2xl font-bolder pt-5'>Your Books</h2>
   <ol>
     {{#each user.books as |book|}}
     <li class='p-5 flex-col text-center transform transition duration-600 hover:scale-105 justify-center'>
       {{> book-info book}}
-      <a href="/dashboard/edit/books/{{book.id}}" class="edit-link bg-green-100 rounded-2xl p-2 px-5 border border-green-700 hover:border-green-400 hover:text-white hover:bg-green-800 py-5">Edit book</a>
+      <a href="/dashboard/edit/books/{{book.id}}" class="bg-green-100 rounded-2xl p-2 px-5 border border-green-700 hover:border-green-400 hover:text-white hover:bg-green-800 py-5">Edit book</a>
     </li>
     {{/each}}
   </ol>
@@ -73,7 +72,7 @@
 
 {{#if user.started_clubs}}
 <section class='text-center'>
-  <h2>Your Club</h2>
+  <h2 class='text-2xl font-bolder pt-5'>Your Club</h2>
   <ol>
     <li class='p-5 text-center transform transition duration-600 hover:scale-105 justify-center'>
       {{> club-info user.started_clubs}}
