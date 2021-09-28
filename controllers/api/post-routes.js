@@ -85,8 +85,8 @@ router.put("/:id", withAuth, (req, res) => {
   console.log('=====================');
   Post.update(
     {
-      book_name: req.body.book_name,
-      book_author: req.body.book_author,
+      book_name: req.body.name,
+      book_author: req.body.author,
       price: req.body.price,
       content: req.body.content,
       user_id: req.session.user_id,

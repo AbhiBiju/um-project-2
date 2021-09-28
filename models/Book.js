@@ -29,12 +29,6 @@ class Book extends Model {
 // Create fields and columns for User model here
 Book.init(
   {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    // },
     title: {
       type: DataTypes.TEXT,
       allowNull: false,

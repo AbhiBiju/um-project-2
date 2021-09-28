@@ -1,25 +1,25 @@
 {
   "name": "um-project-2",
   "version": "1.0.0",
-  "description": "bookme",
+  "description": "BookMe Social App",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seeds/index.js",
     "start": "node server.js",
     "build:css": "tailwind build public/src/style.css -o public/stylesheets/tailwind.css",
-    "prod": "NODE_ENV=production postcss public/stylesheets/tailwind.css -o public/src/style.css"
+    "prod": "NODE_ENV=production postcss  -o public/src/style.css"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SalasD93/um-project-2.git"
+    "url": "git+https://github.com/AbhiBiju/um-project-2.git"
   },
-  "author": "Diana Salas",
+  "author": "Malik Harris, Tysean Hill, Abhinav Biju",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SalasD93/um-project-2/issues"
+    "url": "https://github.com/AbhiBiju/um-project-2/issues"
   },
-  "homepage": "https://github.com/SalasD93/um-project-2#readme",
+  "homepage": "https://github.com/AbhiBiju/um-project-2#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.0",

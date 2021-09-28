@@ -1,0 +1,32 @@
+<article>
+  <h2 class="text-2xl font-bold mx-5 text-green-500">
+    Edit Book
+  </h2>
+ <form class="new-book-form flex flex-col justify-end">
+      <div class='py-2 flex flex-row justify-end'>
+        <label for="title">Book Title: </label>
+        <input class='border border-black-200 border-px rounded-lg' type="text" id="title" name="title" />
+      </div>
+      <div class='py-2 flex flex-row justify-end'>
+        <label for="author">Book Author: </label>
+        <input class='border border-black-200 border-px rounded-lg' id="author" name="author" />
+      </div>
+      <div class='py-2 flex flex-row justify-end'>
+        <label for="review">Review: </label>
+        <textarea class='border border-black-200 border-px rounded-lg' id="review" name="review"></textarea>
+      </div>
+    <button type="submit" class="bg-green-400 hover:bg-green-200 rounded-lg p-2">Save book</button>
+    </form>
+    <button type="button" class="delete-book-btn rounded-lg p-2">Delete book</button>
+</article>
+
+<form class="comment-form">
+    <textarea name="comment-body"></textarea>
+    <button class="bg-blue-400 rounded-lg text-white-100 hover:bg-blue-200 p-2" type="submit">add comment</button>
+</form>
+
+{{> comments post.comments}}
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/comment.js"></script>
