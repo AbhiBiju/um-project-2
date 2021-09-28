@@ -80,7 +80,9 @@ router.post("/", upload.any(), async (req, res) => {
   await User.create({
     username: req.body.username,
     email: req.body.email,
-    avatar: imgUpload.url || "https://res.cloudinary.com/dxqvdgvul/image/upload/v1632066194/defaultAvatar_wgzwzz.jpg",
+    avatar:
+      imgUpload.url ||
+      "https://res.cloudinary.com/dxqvdgvul/image/upload/w_280,h_280,c_crop,ar_1:1,g_auto,r_max,b_rgb:262c35/v1632066194/defaultAvatar_wgzwzz.jpg",
     zip_code: req.body.zip_code || null,
     password: req.body.password,
   })

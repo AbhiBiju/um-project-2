@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ["./src/**/*.html", "./src/**/*.handlebars", './src/**/*.vue',
-    './public/**/*.html',"./public/*.html" ,'./public/stylesheets/tailwind.css', 'public/stylesheets/tailwind.css'],
+  purge: ["*.handlebars"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
