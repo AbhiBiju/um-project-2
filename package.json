@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seeds/index.js",
     "start": "node server.js",
-    "build:css": "tailwind build public/src/style.css -o public/stylesheets/tailwind.css",
-    "prod": "NODE_ENV=production postcss  -o public/src/style.css"
+    "build:css": "tailwind build style.css -o public/styles/tailwind.css",
+    "prod": "NODE_ENV=production postcss style.css -o public/styles/tailwind.css"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/AbhiBiju/um-project-2#readme",
   "dependencies": {
+    "autoprefixer": "^10.3.6",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.0",
     "connect-session-sequelize": "^7.1.2",
@@ -36,6 +37,7 @@
     "postcss": "^8.3.8",
     "postcss-cli": "^9.0.0",
     "postcss-import": "^14.0.2",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "tailwindcss": "^2.2.16"
   }
 }
