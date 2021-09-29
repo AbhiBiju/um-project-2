@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["*.handlebars"],
+  purge: ["./views/*.handlebars", "./views/**/*.handlebars"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -8,8 +8,6 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   plugins: [],
 };
