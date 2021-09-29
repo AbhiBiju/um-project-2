@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-
+let reg = /<.*?script.*\/?>/gi;
 router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
