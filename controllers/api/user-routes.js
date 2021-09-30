@@ -74,7 +74,7 @@ router.post("/", upload.any(), async (req, res) => {
   let imgUpload = "";
 
   if (req.files[0]) {
-    imgUpload = await cloudinary.uploader.upload(req.files[0].path);
+    imgUpload = await cloudinary.uploader.upload(req.files[0].path, { use_filename: true });
   }
 
   await User.create({

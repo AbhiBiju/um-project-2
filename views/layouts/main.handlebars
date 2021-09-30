@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link rel="stylesheet" href="/stylesheets/tailwind.css" />
+    {{!-- favicon --}}
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png" />
+    {{!-- stylesheets --}}
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/tailwind.css" />
     <title>BookMe!</title>
   </head>
 
@@ -29,9 +32,9 @@
           >Login</a>
         {{/if}}
       </nav>
-      <ul class="grid border-t-4 border-red-500 grid-cols-2 text-2xl w-99 mx-auto md:grid-cols-5 py-3">
+      <ul class="grid border-t-4 border-red-500 grid-cols-2 text-2xl w-99 mx-auto sm:grid-cols-5 py-3">
         <li
-          class="px-4 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+          class="px-1 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
         >
           <a href="/">Homepage</a>
         </li>
@@ -46,12 +49,12 @@
           <a href="/club">Book Club</a>
         </li>
         <li
-          class="px-4 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+          class="px-1 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
         >
           <a href="/profile">Profile</a>
         </li>
         <li
-          class="px-4 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
+          class="px-1 md:mx-2 md:border-l-4 md:border-r-4 md:border-green-700 text-green-400 rounded-xl hover:bg-blue-100 hover:text-green-700 transform transition duration-600 hover:scale-125"
         >
           <a id="near-me" href="/location">Near Me</a>
         </li>
@@ -63,9 +66,9 @@
         {{{body}}}
       </main>
       <footer class="text-xs flex flex-col md:flex-row justify-between md:text-md">
-        <span class='py-1 truncate'>Made with ❤ 2021 All rights reserved</span>
-        <span class='py-1 truncate'>
-          Devs: 
+        <span class="py-1 truncate">Made with ❤ 2021 All rights reserved</span>
+        <span class="py-1 truncate">
+          Devs:
           <a
             class="px-2 md:mx-2 transition transform hover:scale-110 transition duration-300 bg-gradient-to-b from-blue-400 to-red-400 hover:from-green-500 hover:to-blue-400 rounded-xl hover:text-white p-1"
             href="https://www.linkedin.com/in/abhinavbiju/"
